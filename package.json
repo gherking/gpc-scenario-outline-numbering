@@ -1,5 +1,5 @@
 {
-  "name": "gpc-for-loop",
+  "name": "gpc-scenario-outline-numbering",
   "version": "0.0.1",
   "description": "Precompiler for Gherking",
   "main": "index.js",
@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gherking/gpc-for-loop.git"
+    "url": "git+https://github.com/gherking/gpc-scenario-outline-numbering.git"
   },
   "keywords": [
     "Gherking",
@@ -18,7 +18,7 @@
   "author": "The GherKing team",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/gherking/gpc-for-loop/issues"
+    "url": "https://github.com/gherking/gpc-scenario-outline-numbering/issues"
   },
-  "homepage": "https://github.com/gherking/gpc-for-loop#readme"
+  "homepage": "https://github.com/gherking/gpc-scenario-outline-numbering#readme"
 }
