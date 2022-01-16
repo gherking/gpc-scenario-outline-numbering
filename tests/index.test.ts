@@ -1,5 +1,5 @@
 import { load, process } from "gherking";
-import { Document } from "gherkin-ast";
+import { Document, pruneID } from "gherkin-ast";
 const ScenarioOutlineNumbering = require("../src");
 //import { ScenarioOutlineNumbering } from "../src";
 
@@ -23,6 +23,9 @@ describe("Scenario outline numbering", ()=> {
             addParameters: false
         }));
 
+        pruneID(actual);
+        pruneID(expected);
+
         expect(actual[0]).toEqual(expected);
     });
 
@@ -32,6 +35,9 @@ describe("Scenario outline numbering", ()=> {
             addNumbering: false,
             addParameters: true
         }));
+
+        pruneID(actual);
+        pruneID(expected);
 
         expect(actual[0]).toEqual(expected);
     });
@@ -46,6 +52,9 @@ describe("Scenario outline numbering", ()=> {
             parameterFormat: '${name} (${parameters})'
         }));
 
+        pruneID(actual);
+        pruneID(expected);
+        
         expect(actual[0]).toEqual(expected);
     });
 });
