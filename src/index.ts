@@ -61,9 +61,9 @@ class ScenarioOutlineNumbering implements PreCompiler {
                 return cell.value === NUMBERING_COLUMN;
             });
             if (fieldExists && this.config.strictNaming) {
-                throw new Error('The default numbering field already exists in Scenario Outline: ' + scenarioOutline.name);
+                throw new Error(`The default numbering field already exists in Scenario Outline: ' ${scenarioOutline.name}`);
             } else if (fieldExists) {
-                console.warn('The default numbering field already exists in Scenario Outline: ' + scenarioOutline.name);
+                console.warn(`The default numbering field already exists in Scenario Outline: ' ${scenarioOutline.name}`);
             } else {
                 this.onExampleHeader(examples.header)
                 examples.body.forEach((row: TableRow, i: number) => {
