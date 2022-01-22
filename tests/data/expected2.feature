@@ -5,7 +5,7 @@ Feature: Test feature file for login
     Background: Opening login page
       Given the login page is opened
 
-    Scenario Outline: Login with <user> without logout
+    Scenario Outline: Login with <user> without logout - <user>,<username>,<password>
       And username is filled with <username>
       And password is filled with <password>
       And login button is clicked
@@ -30,7 +30,7 @@ Feature: Test feature file for login
       When the sign out is clicked
       Then the user should be logged out
 
-    Scenario Outline: Login with <user>
+    Scenario Outline: Login with <user> - <num>,<user>,<username>,<password>
       And username is filled with <username>
       And password is filled with <password>
       And login button is clicked

@@ -5,7 +5,7 @@ Feature: Test feature file for login
     Background: Opening login page
       Given the login page is opened
 
-    Scenario Outline: Login with <user> without logout
+    Scenario Outline: Login with <user> without logout / <num> (<user>|<username>|<password>)
       And username is filled with <username>
       And password is filled with <password>
       And login button is clicked
@@ -17,9 +17,9 @@ Feature: Test feature file for login
         | logout |
 
       Examples:
-        | user   | username | password |
-        | user_1 | user1    | pwd1     |
-        | user_2 | user2    | pwd2     |
+        | num | user   | username | password |
+        | 1   | user_1 | user1    | pwd1     |
+        | 2   | user_2 | user2    | pwd2     |
 
     @logout
     Scenario: Testing logout
@@ -30,7 +30,7 @@ Feature: Test feature file for login
       When the sign out is clicked
       Then the user should be logged out
 
-    Scenario Outline: Login with <user>
+    Scenario Outline: Login with <user> / <num> (<num>|<user>|<username>|<password>)
       And username is filled with <username>
       And password is filled with <password>
       And login button is clicked

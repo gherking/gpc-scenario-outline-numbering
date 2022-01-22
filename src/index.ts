@@ -7,7 +7,8 @@ const DEFAULT_CONFIG: ScenarioOutlineNumberingConfig = {
     parameterDelimiter: ',',
     parameterFormat: '${name} - ${parameters}',
     addNumbering: true,
-    numberingFormat: '${i} - ${name}'
+    numberingFormat: '${i} - ${name}',
+    strictNaming: false
 };
 
 const NUMBERING_COLUMN = 'num';
@@ -46,30 +47,30 @@ class ScenarioOutlineNumbering implements PreCompiler {
         return scenarioOutline;
     }
 
-    onExampleHeader(header: TableRow, parent: ScenarioOutline): void {
-        if (this.config.addNumbering) {
-            const fieldExists = header.cells.some((cell: TableCell) => {
-                return cell.value === NUMBERING_COLUMN;
-            });
-            if (fieldExists) {
-                console.warn('The default numbering field already exists in Scenario Outline: ' + parent.name);
-            }
-            header.cells.unshift(new TableCell(NUMBERING_COLUMN));
-        }
+    onExampleHeader(header: TableRow): void {
+        header.cells.unshift(new TableCell(NUMBERING_COLUMN));
     }
 
-   onExampleRow(row: TableRow, i: number): void {
-        if (this.config.addNumbering) {
-            row.cells.unshift(new TableCell(String(i + 1)));
-        }
+    onExampleRow(row: TableRow, i: number): void {
+        row.cells.unshift(new TableCell(String(i + 1)));
     }
 
     onExamples(examples: Examples, scenarioOutline: ScenarioOutline): Examples {
-        this.onExampleHeader(examples.header, scenarioOutline)
-        examples.body.forEach((row: TableRow, i: number) => {
-            this.onExampleRow(row, i);
-        })
-
+        if (this.config.addNumbering) {
+            const fieldExists = examples.header.cells.some((cell: TableCell) => {
+                return cell.value === NUMBERING_COLUMN;
+            });
+            if (fieldExists && this.config.strictNaming) {
+                throw new Error('The default numbering field already exists in Scenario Outline: ' + scenarioOutline.name);
+            } else if (fieldExists) {
+                console.warn('The default numbering field already exists in Scenario Outline: ' + scenarioOutline.name);
+            } else {
+                this.onExampleHeader(examples.header)
+                examples.body.forEach((row: TableRow, i: number) => {
+                    this.onExampleRow(row, i);
+                })
+            }
+        }
         return examples;
     }
 }

@@ -4,4 +4,5 @@ export interface ScenarioOutlineNumberingConfig {
     parameterFormat: string;
     addNumbering: boolean;
     numberingFormat: string;
+    strictNaming: boolean;
 }
