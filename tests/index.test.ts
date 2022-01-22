@@ -1,6 +1,6 @@
 import { load, process } from "gherking";
 import { Document, pruneID } from "gherkin-ast";
-const ScenarioOutlineNumbering = require("../src");
+import ScenarioOutlineNumbering = require("../src");
 
 const loadTestFeatureFile = async (file: string): Promise<Document> => {
     const ast = await load(`./tests/data/${file}`);
@@ -19,7 +19,11 @@ describe("Scenario outline numbering", () => {
         const expected = await loadTestFeatureFile("expected1.feature");
         const actual = process(base, new ScenarioOutlineNumbering({
             addNumbering: true,
-            addParameters: false
+            addParameters: false,
+            parameterDelimiter: ',',
+            parameterFormat: '${name} - ${parameters}',
+            numberingFormat: '${i} - ${name}',
+            strictNaming: false
         }));
 
         pruneID(actual);
@@ -32,7 +36,11 @@ describe("Scenario outline numbering", () => {
         const expected = await loadTestFeatureFile("expected2.feature");
         const actual = process(base, new ScenarioOutlineNumbering({
             addNumbering: false,
-            addParameters: true
+            addParameters: true,
+            parameterDelimiter: ',',
+            parameterFormat: '${name} - ${parameters}',
+            numberingFormat: '${i} - ${name}',
+            strictNaming: false
         }));
 
         pruneID(actual);
@@ -48,7 +56,8 @@ describe("Scenario outline numbering", () => {
             numberingFormat: '${name} / ${i}',
             addParameters: true,
             parameterDelimiter: '|',
-            parameterFormat: '${name} (${parameters})'
+            parameterFormat: '${name} (${parameters})',
+            strictNaming: false
         }));
 
         pruneID(actual);
@@ -58,10 +67,14 @@ describe("Scenario outline numbering", () => {
     });
 
     test("should throw error when numbering column exists with strict config", async () => {
-        expect(process(base, new ScenarioOutlineNumbering({
+
+        expect(() => new ScenarioOutlineNumbering({
             addNumbering: true,
             addParameters: false,
-            strictNaming: true
-        }))).toThrowError()
+            strictNaming: true,
+            parameterDelimiter: ',',
+            parameterFormat: '${name} - ${parameters}',
+            numberingFormat: '${i} - ${name}',
+        })).toThrow();
     });
 });
