@@ -1,5 +1,5 @@
 import { load, process } from "gherking";
-import { Document, pruneID } from "gherkin-ast";
+import { Document, Examples, pruneID, ScenarioOutline, TableCell, TableRow } from "gherkin-ast";
 import ScenarioOutlineNumbering = require("../src");
 
 const loadTestFeatureFile = async (file: string): Promise<Document> => {
@@ -67,14 +67,28 @@ describe("Scenario outline numbering", () => {
     });
 
     test("should throw error when numbering column exists with strict config", async () => {
-
-        expect(() => new ScenarioOutlineNumbering({
+        const precompiler = new ScenarioOutlineNumbering({
             addNumbering: true,
             addParameters: false,
             strictNaming: true,
             parameterDelimiter: ',',
             parameterFormat: '${name} - ${parameters}',
             numberingFormat: '${i} - ${name}',
-        })).toThrow();
+        })
+        const scenarioOutline = new ScenarioOutline("k", "n", "d");
+        const example = new Examples("k", "n");
+        example.header = new TableRow([new TableCell("num")]);
+
+        expect(() => precompiler.onExamples(example, scenarioOutline)).toThrow("The default numbering field already exists in Scenario Outline: n");
+    });
+
+    test("should work with default config", async () => {
+        const expected = await loadTestFeatureFile("expected1.feature");
+        const actual = process(base, new ScenarioOutlineNumbering());
+
+        pruneID(actual);
+        pruneID(expected);
+
+        expect(actual[0]).toEqual(expected);
     });
 });
