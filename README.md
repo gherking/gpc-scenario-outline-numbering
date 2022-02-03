@@ -44,6 +44,10 @@ save('./features/dist/login.feature', ast, {
 });
 ```
 
-For detailed documentation see the [TypeDocs documentation](https://gherking.github.io/gpc-scenario-outline-numbering?/).
+This package uses [debug](https://www.npmjs.com/package/debug) for logging, use `gpc:scenario-outline-numbering` :
 
-This package uses [debug](https://www.npmjs.com/package/debug) for logging.
+```shell
+DEBUG=gpc:scenario-outline-numbering* gherking ...
+```
+
+For detailed documentation see the [TypeDocs documentation](https://gherking.github.io/gpc-scenario-outline-numbering?/).
