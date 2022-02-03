@@ -6,7 +6,7 @@
 ![CI](https://img.shields.io/github/workflow/status/gherking/gpc-scenario-outline-numbering?/CI/master?label=ci&style=flat-square)
 ![Docs](https://img.shields.io/github/workflow/status/gherking/gpc-scenario-outline-numbering?/Docs/master?label=docs&style=flat-square)
 
-This repository is a template to create precompilers for GherKing.
+This precompiler can add numbering column to Examples tables, and apply formatting to the name of the Scenario Outline.
 
 ## Usage
 
