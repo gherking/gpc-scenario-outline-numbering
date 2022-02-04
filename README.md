@@ -18,7 +18,7 @@ const {Template} = require('gpc-scenario-outline-numbering?');
 let ast = compiler.load('./features/src/login.feature');
 ast = compiler.process(
     ast,
-    new Template({
+    new ScenarioOutlineNumbering({
         // config
     })
 );
