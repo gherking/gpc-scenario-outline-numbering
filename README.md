@@ -13,7 +13,7 @@ This precompiler can add numbering column to Examples tables, and apply formatti
 ```javascript
 'use strict';
 const compiler = require('gherking');
-const {Template} = require('gpc-scenario-outline-numbering?');
+const ScenarioOutlineNumbering = require('gpc-scenario-outline-numbering');
 
 let ast = compiler.load('./features/src/login.feature');
 ast = compiler.process(
