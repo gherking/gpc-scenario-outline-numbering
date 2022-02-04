@@ -30,7 +30,7 @@ await compiler.save('./features/dist/login.feature', ast, {
 ```typescript
 'use strict';
 import {load, process, save} from "gherking";
-import {Template} from "gpc-scenario-outline-numbering?";
+import ScenarioOutlineNumbering = require("gpc-scenario-outline-numbering");
 
 let ast = await load("./features/src/login.feature");
 ast = process(
