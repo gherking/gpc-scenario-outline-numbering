@@ -22,7 +22,7 @@ ast = compiler.process(
         // config
     })
 );
-compiler.save('./features/dist/login.feature', ast, {
+await compiler.save('./features/dist/login.feature', ast, {
     lineBreak: '\r\n'
 });
 ```
