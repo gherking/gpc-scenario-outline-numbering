@@ -15,7 +15,7 @@ This precompiler can add numbering column to Examples tables, and apply formatti
 const compiler = require('gherking');
 const ScenarioOutlineNumbering = require('gpc-scenario-outline-numbering');
 
-let ast = compiler.load('./features/src/login.feature');
+let ast = await compiler.load('./features/src/login.feature');
 ast = compiler.process(
     ast,
     new ScenarioOutlineNumbering({
