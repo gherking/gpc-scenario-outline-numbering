@@ -39,7 +39,7 @@ ast = process(
         // config
     })
 );
-save('./features/dist/login.feature', ast, {
+await save('./features/dist/login.feature', ast, {
     lineBreak: '\r\n'
 });
 ```
