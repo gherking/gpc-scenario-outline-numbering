@@ -32,7 +32,7 @@ compiler.save('./features/dist/login.feature', ast, {
 import {load, process, save} from "gherking";
 import {Template} from "gpc-scenario-outline-numbering?";
 
-let ast = load("./features/src/login.feature");
+let ast = await load("./features/src/login.feature");
 ast = process(
     ast,
     new ScenarioOutlineNumbering({
