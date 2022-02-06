@@ -13,16 +13,16 @@ This precompiler can add numbering column to Examples tables, and apply formatti
 ```javascript
 'use strict';
 const compiler = require('gherking');
-const {Template} = require('gpc-scenario-outline-numbering?');
+const ScenarioOutlineNumbering = require('gpc-scenario-outline-numbering');
 
-let ast = compiler.load('./features/src/login.feature');
+let ast = await compiler.load('./features/src/login.feature');
 ast = compiler.process(
     ast,
-    new Template({
+    new ScenarioOutlineNumbering({
         // config
     })
 );
-compiler.save('./features/dist/login.feature', ast, {
+await compiler.save('./features/dist/login.feature', ast, {
     lineBreak: '\r\n'
 });
 ```
@@ -30,16 +30,16 @@ compiler.save('./features/dist/login.feature', ast, {
 ```typescript
 'use strict';
 import {load, process, save} from "gherking";
-import {Template} from "gpc-scenario-outline-numbering?";
+import ScenarioOutlineNumbering = require("gpc-scenario-outline-numbering");
 
-let ast = load("./features/src/login.feature");
+let ast = await load("./features/src/login.feature");
 ast = process(
     ast,
     new ScenarioOutlineNumbering({
         // config
     })
 );
-save('./features/dist/login.feature', ast, {
+await save('./features/dist/login.feature', ast, {
     lineBreak: '\r\n'
 });
 ```
@@ -50,4 +50,4 @@ This package uses [debug](https://www.npmjs.com/package/debug) for logging, use 
 DEBUG=gpc:scenario-outline-numbering* gherking ...
 ```
 
-For detailed documentation see the [TypeDocs documentation](https://gherking.github.io/gpc-scenario-outline-numbering?/).
+For detailed documentation see the [TypeDocs documentation](https://gherking.github.io/gpc-scenario-outline-numbering/).
