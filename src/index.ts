@@ -1,6 +1,7 @@
 import { PreCompiler } from "gherking";
 import { Examples, ScenarioOutline, TableCell, TableRow } from "gherkin-ast"
 import { ScenarioOutlineNumberingConfig } from './types'
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const ObjectSet = require('object-set-type');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const debug = require("debug")("gpc:scenario-outline-numbering");
