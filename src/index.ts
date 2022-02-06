@@ -1,6 +1,7 @@
 import { PreCompiler } from "gherking";
 import { Examples, ScenarioOutline, TableCell, TableRow } from "gherkin-ast"
 import { ScenarioOutlineNumberingConfig } from './types'
+const ObjectSet = require('object-set-type');
 // eslint-disable-next-line @typescript-eslint/no-var-requires
 const debug = require("debug")("gpc:scenario-outline-numbering");
 
@@ -23,6 +24,9 @@ class ScenarioOutlineNumbering implements PreCompiler {
             ...DEFAULT_CONFIG,
             ...(config || {}),
         };
+        if (!(this.config.numberingFormat && this.config.parameterFormat)){
+            throw new Error ("The numberingFormat and parameterFormat parameters must have a value.")
+        }
     }
 
     onScenarioOutline(scenarioOutline: ScenarioOutline): ScenarioOutline {
@@ -33,7 +37,7 @@ class ScenarioOutlineNumbering implements PreCompiler {
                 .replace(/\$\{name\}/g, scenarioOutline.name);
         }
         if (this.config.addParameters) {
-            let allColumns: Set<TableCell> = new Set();
+            let allColumns: Set<TableCell> = new ObjectSet();
             scenarioOutline.examples.forEach((examples: Examples) => {
                 examples.header.cells.forEach((cell: TableCell) => {
                     allColumns.add(cell);

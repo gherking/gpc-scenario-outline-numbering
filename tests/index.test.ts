@@ -91,4 +91,17 @@ describe("Scenario outline numbering", () => {
 
         expect(actual[0]).toEqual(expected);
     });
+
+
+    test("should throw error when required parameter is empty", async () => {
+
+        expect(() => new ScenarioOutlineNumbering({
+            addNumbering: true,
+            addParameters: false,
+            strictNaming: true,
+            parameterDelimiter: ',',
+            parameterFormat: '',
+            numberingFormat: '${i} - ${name}',
+        })).toThrow("The numberingFormat and parameterFormat parameters must have a value.");
+    });
 });
