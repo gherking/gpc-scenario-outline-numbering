@@ -1,10 +1,10 @@
 # gpc-scenario-outline-numbering
 
 ![Downloads](https://img.shields.io/npm/dw/gpc-scenario-outline-numbering?style=flat-square)
-![Version@npm](https://img.shields.io/npm/v/gpc-scenario-outline-numbering??label=version%40npm&style=flat-square)
-![Version@git](https://img.shields.io/github/package-json/v/gherking/gpc-scenario-outline-numbering?/master?label=version%40git&style=flat-square)
-![CI](https://img.shields.io/github/workflow/status/gherking/gpc-scenario-outline-numbering?/CI/master?label=ci&style=flat-square)
-![Docs](https://img.shields.io/github/workflow/status/gherking/gpc-scenario-outline-numbering?/Docs/master?label=docs&style=flat-square)
+![Version@npm](https://img.shields.io/npm/v/gpc-scenario-outline-numbering?label=version%40npm&style=flat-square)
+![Version@git](https://img.shields.io/github/package-json/v/gherking/gpc-scenario-outline-numbering/master?label=version%40git&style=flat-square)
+![CI](https://img.shields.io/github/workflow/status/gherking/gpc-scenario-outline-numbering/CI/master?label=ci&style=flat-square)
+![Docs](https://img.shields.io/github/workflow/status/gherking/gpc-scenario-outline-numbering/Docs/master?label=docs&style=flat-square)
 
 This precompiler can add numbering column to Examples tables, and apply formatting to the name of the Scenario Outline.
 
